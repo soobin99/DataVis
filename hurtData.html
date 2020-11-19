@@ -99,7 +99,7 @@ button:hover{
   </style>
 </head>
 <body>
-  <div id="week">
+  <div id="hurtData">
   <div id='layout'>
     <h2>사상자수가 10명 이상인 큰 사고의 특징</h2>
     <div>
@@ -123,18 +123,18 @@ button:hover{
 </body>
 <script>
   
-    d3.csv("Data/week.csv", function(d, i, columns) {
+    d3.csv("Data/test.csv", function(d, i, columns) {
       for (var i = 1, n = columns.length; i < n; ++i) d[columns[i]] = +d[columns[i]];
       return d;
     }, function(error, data) {
       if (error) throw error;
 
-      console.log(data[0].Week);
+      console.log(data[0].hurtData);
 
       const sample = [];
       for(var i=0;i<data.length;i++) {
         var obj = {};
-        obj.Week = data[i].Week;
+        obj.hurtData = data[i].hurtData;
         obj.Count = data[i].Count;
         
         console.log(obj);
@@ -156,7 +156,7 @@ button:hover{
 
     const xScale = d3.scaleBand()
       .range([0, width])
-      .domain(sample.map((s) => s.Week))
+      .domain(sample.map((s) => s.hurtData))
       .padding(0.4)
     
     const yScale = d3.scaleLinear()
@@ -201,7 +201,7 @@ button:hover{
     barGroups
       .append('rect')
       .attr('class', 'bar')
-      .attr('x', (g) => xScale(g.Week))
+      .attr('x', (g) => xScale(g.hurtData))
       .attr('y', (g) => yScale(g.Count))
       .attr('height', (g) => height - yScale(g.Count))
       .attr('width', xScale.bandwidth())
@@ -213,7 +213,7 @@ button:hover{
           .transition()
           .duration(300)
           .attr('opacity', 0.6)
-          .attr('x', (a) => xScale(a.Week) - 5)
+          .attr('x', (a) => xScale(a.hurtData) - 5)
           .attr('width', xScale.bandwidth() + 10)
 
         const y = yScale(actual.Count)
@@ -227,7 +227,7 @@ button:hover{
 
         barGroups.append('text')
           .attr('class', 'divergence')
-          .attr('x', (a) => xScale(a.Week) + xScale.bandwidth() / 2)
+          .attr('x', (a) => xScale(a.hurtData) + xScale.bandwidth() / 2)
           .attr('y', (a) => yScale(a.Count) + 30)
           .attr('fill', 'white')
           .attr('text-anchor', 'middle')
@@ -236,7 +236,7 @@ button:hover{
             
             let text = ''
             if (divergence > 0) text += '+'
-            text += `${divergence}%`
+            text += `${divergence}`
 
             return idx !== i ? text : '';
           })
@@ -250,7 +250,7 @@ button:hover{
           .transition()
           .duration(300)
           .attr('opacity', 1)
-          .attr('x', (a) => xScale(a.Week))
+          .attr('x', (a) => xScale(a.hurtData))
           .attr('width', xScale.bandwidth())
 
         chart.selectAll('#limit').remove()
@@ -260,10 +260,10 @@ button:hover{
     barGroups 
       .append('text')
       .attr('class', 'Count')
-      .attr('x', (a) => xScale(a.Week) + xScale.bandwidth() / 2)
+      .attr('x', (a) => xScale(a.hurtData) + xScale.bandwidth() / 2)
       .attr('y', (a) => yScale(a.Count) + 30)
       .attr('text-anchor', 'middle')
-      .text((a) => `${a.Count}%`)
+      .text((a) => `${a.Count}`)
     
     svg
       .append('text')
@@ -272,7 +272,7 @@ button:hover{
       .attr('y', margin / 2.4)
       .attr('transform', 'rotate(-90)')
       .attr('text-anchor', 'middle')
-      .text('사상자수가 10명 이상인 큰 사고 (%)')
+      .text('사상자수가 10명 이상인 큰 사고의 수')
 
     svg.append('text')
       .attr('class', 'label')
@@ -286,7 +286,7 @@ button:hover{
       .attr('x', width / 2 + margin)
       .attr('y', 40)
       .attr('text-anchor', 'middle')
-      .text('요일별 사상자수가 10명 이상인 큰 사고 (%)')
+      .text('요일별 사상자수가 10명 이상인 큰 사고의 수')
 
     });
   
