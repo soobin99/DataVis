@@ -129,8 +129,6 @@ button:hover{
       <button type="button" class="violationLaw" onClick="location.href='violationLaw.html'">법규위반</button>
       <button type="button" class="hurtData" onClick="location.href='hurtData.html'">Parallel</button>
     </div>
-    <div id='container'>
-      <svg ></svg>
     </div>
   </div>
 </div>
@@ -145,7 +143,7 @@ button:hover{
 
   var color = d3.scaleOrdinal()
     .domain([2012, 2013, 2014, 2015, 2016, 2017, 2018])
-    .range("#DB7F85", "#50AB84", "#4C6C86", "#C47DCB", "#B59248", "#DD6CA7");
+    .range('#FF9E9B','#32BEBE','#00BFFF','#228B22','#CC0000','#7F654C','#9D71BD');
 
   var types = {
     "Number": {
@@ -166,16 +164,15 @@ button:hover{
 
   var dimensions = [
     {
-      key: "year",
-      description: "year",
-      type: types["String"],
-      axis: d3.axisLeft().tickFormat(function(d, i) {return d;})
-    },
-    {
       key: "dayAndNight",
       description: "dayAndNight",
       type: types["String"],
       axis: d3.axisLeft().tickFormat(function(d, i) {return d;})
+    },
+    {
+      key: "roadKind",
+      description: "roadKind",
+      type: types["String"]
     },
     {
       key: "week",
@@ -188,14 +185,24 @@ button:hover{
       type: types["Number"]
     },
     {
+      key: "injuredPerson",
+      description: "injuredPerson",
+      type: types["Number"]
+    },
+    {
       key: "casualty",
       description: "casualty",
       type: types["Number"]
     },
     {
-      key: "injuredPerson",
-      description: "injuredPerson",
-      type: types["Number"]
+      key: "perpetrator",
+      description: "perpetrator",
+      type: types["String"]
+    },
+    {
+      key: "victim",
+      description: "victim",
+      type: types["String"]
     },
     {
       key: "location",
@@ -210,21 +217,6 @@ button:hover{
     {
       key: "violationLaw",
       description: "violationLaw",
-      type: types["String"]
-    },
-    {
-      key: "roadKind",
-      description: "roadKind",
-      type: types["String"]
-    },
-    {
-      key: "perpetrator",
-      description: "perpetrator",
-      type: types["String"]
-    },
-    {
-      key: "victim",
-      description: "victim",
       type: types["String"]
     }
   ];
