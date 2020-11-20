@@ -61,9 +61,9 @@ h3{
       <button type="button" class="death" onClick="location.href='death.html'">사망자수</button>
       <button type="button" class="injuredPerson" onClick="location.href='injuredPerson.html'">부상자수</button>
       <button type="button" class="location" onClick="location.href='location.html'">발생지</button>
+      <button type="button" class="roadKind" onClick="location.href='roadKind.html'">도로형태</button>
       <button type="button" class="perpetrator" onClick="location.href='perpetrator.html'">가해자</button>
       <button type="button" class="victim" onClick="location.href='victim.html'">피해자</button>
-      <button type="button" class="roadKind" onClick="location.href='roadKind.html'">도로형태</button>
       <button type="button" class="violationLaw" onClick="location.href='violationLaw.html'">법규위반</button>
       <button type="button" class="hurtData" onClick="location.href='hurtData.html'">Parallel</button>
     </div>
@@ -72,7 +72,7 @@ h3{
     </div>
     <script>
   
-        var colorArr=['#FF9E9B','#32BEBE','#00BFFF','#228B22','#CC0000','#7F654C','#9D71BD','##F3B600'];
+  
         var width = 500;
         var height = 500;
         var margin = 80;
@@ -94,7 +94,7 @@ h3{
          g = svg.append("g")
                      .attr("transform", "translate(" + width / 2 + "," + height/ 2 +")")
   
-        d3.csv("Data/roadKind.csv", function(data) {
+        d3.csv("Data/violationLaw.csv", function(data) {
     
          var arcs = pie(data);
          
@@ -104,9 +104,7 @@ h3{
              
               pieChart.append("path")
                   .style("fill", function(d,i){
-                        var len=colorArr.length;
-                        var idx=i%len;
-                          return  d3.color(colorArr[idx]);
+                          return  d3.color("hsl(50, 70%, " + d.value/1.5 + "%)");
                              })
                   .attr("d", arc);
                                   
@@ -119,7 +117,7 @@ h3{
                   .style("font-size",15+'px')
                   .style("text-anchor", "middle")
                   .text(function(d) { 
-                        return d.data.roadKind;
+                        return d.data.violationLaw;
                   });
   });
   function type(d){

@@ -123,9 +123,9 @@ button:hover{
       <button type="button" class="death" onClick="location.href='death.html'">사망자수</button>
       <button type="button" class="injuredPerson" onClick="location.href='injuredPerson.html'">부상자수</button>
       <button type="button" class="location" onClick="location.href='location.html'">발생지</button>
-      <button type="button" class="roadKind" onClick="location.href='roadKind.html'">도로형태</button>
       <button type="button" class="perpetrator" onClick="location.href='perpetrator.html'">가해자</button>
       <button type="button" class="victim" onClick="location.href='victim.html'">피해자</button>
+      <button type="button" class="roadKind" onClick="location.href='roadKind.html'">도로형태</button>
       <button type="button" class="violationLaw" onClick="location.href='violationLaw.html'">법규위반</button>
       <button type="button" class="hurtData" onClick="location.href='hurtData.html'">Parallel</button>
     </div>
@@ -136,7 +136,7 @@ button:hover{
 </div>
 </body>
 <script>
-  var margin = {top:66, right:110, bottom:20, left:188},
+  var margin = {top:66, right:50, bottom:20, left:188},
       width = document.body.clientWidth - margin.left - margin.right,
       height = 340 - margin.top - margin.bottom,
       innerHeight = height - 2;
@@ -165,6 +165,12 @@ button:hover{
   };
 
   var dimensions = [
+    {
+      key: "year",
+      description: "year",
+      type: types["String"],
+      axis: d3.axisLeft().tickFormat(function(d, i) {return d;})
+    },
     {
       key: "dayAndNight",
       description: "dayAndNight",
@@ -242,7 +248,7 @@ button:hover{
     .style("width", width + "px")
     .style("height", height + "px")
     .style("margin-top", margin.top + "px")
-    .style("margin-left", margin.lef + "px");
+    .style("margin-left", margin.left + "px");
 
   var ctx = canvas.node().getContext("2d");
   ctx.globalCompositeOperation = "darken";
@@ -381,7 +387,7 @@ button:hover{
           });
         });
 
-        var selected = data.fileter(function(d) {
+        var selected = data.filter(function(d) {
           if(actives.every(function(active) {
             var dim = active.dimension;
             return dim.type.within(d[dim.key], active.extent, dim);

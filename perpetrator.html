@@ -3,7 +3,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-  <title>사상자수가 10명 이상인 큰 사고의 특징</title>
+  <title>18011499 임수빈</title>
   
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <script src="https://d3js.org/d3.v4.min.js"></script>
@@ -109,9 +109,9 @@ button:hover{
       <button type="button" class="death" onClick="location.href='death.html'">사망자수</button>
       <button type="button" class="injuredPerson" onClick="location.href='injuredPerson.html'">부상자수</button>
       <button type="button" class="location" onClick="location.href='location.html'">발생지</button>
-      <button type="button" class="roadKind" onClick="location.href='roadKind.html'">도로형태</button>
       <button type="button" class="perpetrator" onClick="location.href='perpetrator.html'">가해자</button>
       <button type="button" class="victim" onClick="location.href='victim.html'">피해자</button>
+      <button type="button" class="roadKind" onClick="location.href='roadKind.html'">도로형태</button>
       <button type="button" class="violationLaw" onClick="location.href='violationLaw.html'">법규위반</button>
       <button type="button" class="hurtData" onClick="location.href='hurtData.html'">Parallel</button>
     </div>
@@ -228,7 +228,7 @@ button:hover{
         barGroups.append('text')
           .attr('class', 'divergence')
           .attr('x', (a) => xScale(a.perpetrator) + xScale.bandwidth() / 2)
-          .attr('y', (a) => yScale(a.Count) + 30)
+          .attr('y', (a) => yScale(a.Count) - 10)
           .attr('fill', 'white')
           .attr('text-anchor', 'middle')
           .text((a, idx) => {
@@ -261,7 +261,7 @@ button:hover{
       .append('text')
       .attr('class', 'Count')
       .attr('x', (a) => xScale(a.perpetrator) + xScale.bandwidth() / 2)
-      .attr('y', (a) => yScale(a.Count) + 30)
+      .attr('y', (a) => yScale(a.Count) - 10)
       .attr('text-anchor', 'middle')
       .text((a) => `${a.Count}%`)
     
