@@ -228,7 +228,7 @@ button:hover{
         barGroups.append('text')
           .attr('class', 'divergence')
           .attr('x', (a) => xScale(a.Week) + xScale.bandwidth() / 2)
-          .attr('y', (a) => yScale(a.Count) + 30)
+          .attr('y', (a) => yScale(a.Count) - 10)
           .attr('fill', 'white')
           .attr('text-anchor', 'middle')
           .text((a, idx) => {
@@ -261,7 +261,7 @@ button:hover{
       .append('text')
       .attr('class', 'Count')
       .attr('x', (a) => xScale(a.Week) + xScale.bandwidth() / 2)
-      .attr('y', (a) => yScale(a.Count) + 30)
+      .attr('y', (a) => yScale(a.Count) - 10)
       .attr('text-anchor', 'middle')
       .text((a) => `${a.Count}%`)
     
