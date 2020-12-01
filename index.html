@@ -4,11 +4,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
   <title>18011499 임수빈</title>
-  
+
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <script src="https://d3js.org/d3.v4.min.js"></script>
   <style>
-      
+
 body {
   font-family: 'Open Sans', sans-serif;
 }
@@ -115,6 +115,7 @@ button:hover{
       <button type="button" class="violationLaw" onClick="location.href='violationLaw.html'">법규위반</button>
       <button type="button" class="hurtData" onClick="location.href='hurtData.html'">Parallel</button>
       <button type="button" class="map" onClick="location.href='map.html'">map</button>
+      <button type="button" class="map2" onClick="location.href='map2.html'">map2</button>
     </div>
     <div id='container'>
       <svg ></svg>
@@ -123,7 +124,7 @@ button:hover{
 </div>
 </body>
 <script>
-  
+
     d3.csv("Data/week.csv", function(d, i, columns) {
       for (var i = 1, n = columns.length; i < n; ++i) d[columns[i]] = +d[columns[i]];
       return d;
@@ -137,17 +138,17 @@ button:hover{
         var obj = {};
         obj.Week = data[i].Week;
         obj.Count = data[i].Count;
-        
+
         console.log(obj);
 
         sample.push(obj);
       }
       console.log(sample);
-    
-    
+
+
     const svg = d3.select('svg');
     const svgContainer = d3.select('#container');
-    
+
     const margin = 80;
     const width = 1000 - 2 * margin;
     const height = 600 - 2 * margin;
@@ -159,7 +160,7 @@ button:hover{
       .range([0, width])
       .domain(sample.map((s) => s.Week))
       .padding(0.4)
-    
+
     const yScale = d3.scaleLinear()
       .range([height, 0])
       .domain([0, 40]);
@@ -234,7 +235,7 @@ button:hover{
           .attr('text-anchor', 'middle')
           .text((a, idx) => {
             const divergence = (a.Count - actual.Count).toFixed(1)
-            
+
             let text = ''
             if (divergence > 0) text += '+'
             text += `${divergence}%`
@@ -258,14 +259,14 @@ button:hover{
         chart.selectAll('.divergence').remove()
       })
 
-    barGroups 
+    barGroups
       .append('text')
       .attr('class', 'Count')
       .attr('x', (a) => xScale(a.Week) + xScale.bandwidth() / 2)
       .attr('y', (a) => yScale(a.Count) - 10)
       .attr('text-anchor', 'middle')
       .text((a) => `${a.Count}%`)
-    
+
     svg
       .append('text')
       .attr('class', 'label')
@@ -290,6 +291,6 @@ button:hover{
       .text('요일별 사상자수가 10명 이상인 큰 사고 (%)')
 
     });
-  
+
 </script>
 </html>
