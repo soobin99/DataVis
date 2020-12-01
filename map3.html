@@ -15,6 +15,7 @@
     svg .municipality.p6 { fill: rgb(201,73,33); }
     svg .municipality.p7 { fill: rgb(186,31,8); }
     svg .municipality.p8 { fill: rgb(157,8,8); }
+    svg .municipality.p9 { fill: rgb(80,0,0); }
     svg text { font-size: 10px;}
     .colorBar{margin-left: 20px;}
     .p0{ background: rgb(255,241,247); width:10px; height:10px; display: block; margin: 0px; padding: 0px;}
@@ -26,6 +27,7 @@
     .p6{ background: rgb(201,73,33); width:10px; height:10px; display: block;margin: 0px; padding: 0px;}
     .p7{ background: rgb(186,31,8); width:10px; height:10px; display: block;margin: 0px; padding: 0px;}
     .p8{ background: rgb(157,8,8); width:10px; height:10px; display: block;margin: 0px; padding: 0px;}
+    .p9{ background: rgb(80,0,0); width:10px; height:10px; display: block;margin: 0px; padding: 0px;}
     p{
       font-size: 30px;
       margin-left: 350px;
@@ -55,6 +57,7 @@
         <div class="p6"></div>
         <div class="p7"></div>
         <div class="p8"></div>
+        <div class="p9"></div>
     </div>
     </div>
     <div id="chart"></div>
@@ -97,6 +100,18 @@
           d.properties.count = popByName.get(d.properties.name);
           d.properties.density = d.properties.count / path.area(d);
           d.properties.quantized = quantize(d.properties.density);
+
+          if (d.properties.count == 0) d.properties.quantized = "p0";
+          else if (d.properties.count < 50) d.properties.quantized = "p1";
+          else if (d.properties.count < 100) d.properties.quantized = "p2";
+          else if (d.properties.count < 150) d.properties.quantized = "p3";
+          else if (d.properties.count < 200) d.properties.quantized = "p4";
+          else if (d.properties.count < 250) d.properties.quantized = "p5";
+          else if (d.properties.count < 300) d.properties.quantized = "p6";
+          else if (d.properties.count < 350) d.properties.quantized = "p7";
+          else if (d.properties.count < 400) d.properties.quantized = "p8";
+          else d.properties.quantized = "p9";
+
         });
 
       svg.selectAll("path")
