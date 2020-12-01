@@ -13,14 +13,20 @@
     }
 
     svg .municipality.p0 {
-      fill: rgb(160, 200, 250);
+      fill: rgb(120, 150, 200);
     }
 
     svg .municipality.p1 {
-      fill: rgb(250, 200, 0);
+      fill: rgb(160, 200, 250);
     }
 
     svg .municipality.p2 {
+      fill:  rgb(250, 200, 0);
+    }
+    svg .municipality.p3 {
+      fill: rgb(210, 120, 120);
+    }
+    svg .municipality.p4 {
       fill: rgb(250, 80, 80);
     }
 
@@ -33,6 +39,14 @@
     }
 
     .p0 {
+      background: rgb(120, 150, 200);
+      width: 10px;
+      height: 10px;
+      display: block;
+      margin: 0px;
+      padding: 0px;
+    }
+    .p1 {
       background: rgb(160, 200, 250);
       width: 10px;
       height: 10px;
@@ -41,7 +55,7 @@
       padding: 0px;
     }
 
-    .p1 {
+    .p2 {
       background: rgb(250, 200, 0);
       width: 10px;
       height: 10px;
@@ -50,7 +64,15 @@
       padding: 0px;
     }
 
-    .p2 {
+    .p3 {
+      background: rgb(210, 120, 120);
+      width: 10px;
+      height: 10px;
+      display: block;
+      margin: 0px;
+      padding: 0px;
+    }
+    .p3 {
       background: rgb(250, 80, 80);
       width: 10px;
       height: 10px;
@@ -61,7 +83,7 @@
 
     p {
       font-size: 30px;
-      margin-left: 350px;
+      margin-left: 245px;
     }
 
     button {
@@ -91,7 +113,7 @@
 </head>
 
 <body>
-  <p>지도 시각화</p>
+  <p>지역별 사상자, 부상자 비율</p>
   <div><button type="button" class="index" onClick="location.href='index.html'">돌아가기</button></div>
   <div class="colorBarArea">
     <div>colorBar</div>
@@ -99,6 +121,8 @@
       <div class="p0"></div>
       <div class="p1"></div>
       <div class="p2"></div>
+      <div class="p3"></div>
+      <div class="p4"></div>
     </div>
   </div>
   <div id="chart">
@@ -143,9 +167,11 @@
         d.properties.death = popByName.get(d.properties.name);
         if (d.properties.death == 0) d.properties.hurt = 0;
         else d.properties.hurt = (100 - d.properties.death).toFixed(2);
-        if (d.properties.death < 50) d.properties.quantized = "p0";
-        else if (d.properties.death == 50) d.properties.quantized = "p1";
-        else d.properties.quantized = "p2";
+        if (d.properties.death == 0) d.properties.quantized = "p0";
+        else if (d.properties.death < 25) d.properties.quantized = "p1";
+        else if (d.properties.death == 50) d.properties.quantized = "p2";
+        else if (d.properties.death < 75) d.properties.quantized = "p3";
+        else d.properties.quantized = "p4";
         //d.properties.density = d.properties.death / path.area(d);
         //d.properties.quantized = quantize(d.properties.density);
       });
