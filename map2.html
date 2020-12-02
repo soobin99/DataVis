@@ -81,7 +81,7 @@
       padding: 0px;
     }
 
-    p {
+    h1 {
       font-size: 30px;
       margin-left: 245px;
     }
@@ -109,20 +109,25 @@
     .pie{
       background: rgba(255,255,255,0);
     }
+    .colorBarArea{
+      position: absolute;
+    }
   </style>
 </head>
 
 <body>
-  <p>지역별 사상자, 부상자 비율</p>
+  <h1>지역별 사상자, 부상자 비율</h1>
   <div><button type="button" class="index" onClick="location.href='index.html'">돌아가기</button></div>
   <div class="colorBarArea">
-    <div>colorBar</div>
+    <div><h4>colorBar</h4></div>
     <div class="colorBar">
+      <h5>Low</h5>
       <div class="p0"></div>
       <div class="p1"></div>
       <div class="p2"></div>
       <div class="p3"></div>
       <div class="p4"></div>
+      <h5>High</h5>
     </div>
   </div>
   <div id="chart">

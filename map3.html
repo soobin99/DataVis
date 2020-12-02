@@ -28,7 +28,7 @@
     .p7{ background: rgb(186,31,8); width:10px; height:10px; display: block;margin: 0px; padding: 0px;}
     .p8{ background: rgb(157,8,8); width:10px; height:10px; display: block;margin: 0px; padding: 0px;}
     .p9{ background: rgb(80,0,0); width:10px; height:10px; display: block;margin: 0px; padding: 0px;}
-    p{
+    h1{
       font-size: 30px;
       margin-left: 300px;
     }
@@ -40,14 +40,18 @@
       height: 50px;
       width: 100px;
     }
+    .colorBar{
+      position: absolute;
+    }
     </style>
   </head>
   <body>
-    <p>지역별 사고 발생 횟수</p>
+    <h1>지역별 사고 발생 횟수</h1>
     <div><button type="button" class="index" onClick="location.href='index.html'">돌아가기</button></div>
     <div class="colorBarArea">
-      <div>colorBar</div>
+      <div><h4>colorBar</h4></div>
       <div class="colorBar">
+        <h5>Low</h5>
         <div class="p0"></div>
         <div class="p1"></div>
         <div class="p2"></div>
@@ -58,6 +62,7 @@
         <div class="p7"></div>
         <div class="p8"></div>
         <div class="p9"></div>
+        <h5>High</h5>
     </div>
     </div>
     <div id="chart"></div>
