@@ -167,10 +167,10 @@
         d.properties.death = popByName.get(d.properties.name);
         if (d.properties.death == 0) d.properties.hurt = 0;
         else d.properties.hurt = (100 - d.properties.death).toFixed(2);
-        if (d.properties.death == 0) d.properties.quantized = "p0";
-        else if (d.properties.death < 25) d.properties.quantized = "p1";
-        else if (d.properties.death == 50) d.properties.quantized = "p2";
-        else if (d.properties.death < 75) d.properties.quantized = "p3";
+        if (d.properties.death <= 20) d.properties.quantized = "p0";
+        else if (d.properties.death <= 40) d.properties.quantized = "p1";
+        else if (d.properties.death <= 60) d.properties.quantized = "p2";
+        else if (d.properties.death <= 80) d.properties.quantized = "p3";
         else d.properties.quantized = "p4";
         //d.properties.density = d.properties.death / path.area(d);
         //d.properties.quantized = quantize(d.properties.density);
