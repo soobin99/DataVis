@@ -1,4 +1,6 @@
-accKind,Count
-Car and People,3.52 
-Car and Car,87.67 
-Only Car,8.81 
+accKind,percent
+Car and Car,40.44
+Car and People,40.26
+Crossing,0.01
+Only Car,19.28
+pedestrian crossing,0.01

@@ -1,133 +1,284 @@
-
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <style>
-    svg { background-color: #fff; }
-    svg .municipality:hover { stroke: rgb(255,150,150); }
-    svg .municipality.p0 { fill: rgb(255,241,247); }
-    svg .municipality.p1 { fill: rgb(247,225,222); }
-    svg .municipality.p2 { fill: rgb(239,199,198); }
-    svg .municipality.p3 { fill: rgb(225,162,158); }
-    svg .municipality.p4 { fill: rgb(224,124,107); }
-    svg .municipality.p5 { fill: rgb(218,96,66); }
-    svg .municipality.p6 { fill: rgb(201,73,33); }
-    svg .municipality.p7 { fill: rgb(186,31,8); }
-    svg .municipality.p8 { fill: rgb(157,8,8); }
-    svg .municipality.p9 { fill: rgb(80,0,0); }
-    svg text { font-size: 10px;}
-    .colorBar{margin-left: 20px;}
-    .p0{ background: rgb(255,241,247); width:10px; height:10px; display: block; margin: 0px; padding: 0px;}
-    .p1{ background: rgb(247,225,222); width:10px; height:10px; display: block;margin: 0px; padding: 0px;}
-    .p2{ background: rgb(239,199,198); width:10px; height:10px; display: block;margin: 0px; padding: 0px;}
-    .p3{ background: rgb(225,162,158); width:10px; height:10px; display: block;margin: 0px; padding: 0px;}
-    .p4{ background: rgb(224,124,107); width:10px; height:10px; display: block;margin: 0px; padding: 0px;}
-    .p5{ background: rgb(218,96,66); width:10px; height:10px; display: block;margin: 0px; padding: 0px;}
-    .p6{ background: rgb(201,73,33); width:10px; height:10px; display: block;margin: 0px; padding: 0px;}
-    .p7{ background: rgb(186,31,8); width:10px; height:10px; display: block;margin: 0px; padding: 0px;}
-    .p8{ background: rgb(157,8,8); width:10px; height:10px; display: block;margin: 0px; padding: 0px;}
-    .p9{ background: rgb(80,0,0); width:10px; height:10px; display: block;margin: 0px; padding: 0px;}
-    h1{
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    svg {
+      background-color: #fff;
+    }
+
+    svg .municipality:hover {
+      stroke: rgb(255, 255, 255);
+    }
+
+    svg .municipality.p0 {
+      fill: rgb(120, 150, 200);
+    }
+
+    svg .municipality.p1 {
+      fill: rgb(160, 200, 250);
+    }
+
+    svg .municipality.p2 {
+      fill:  rgb(250, 200, 0);
+    }
+    svg .municipality.p3 {
+      fill: rgb(210, 120, 120);
+    }
+    svg .municipality.p4 {
+      fill: rgb(250, 80, 80);
+    }
+
+    svg text {
+      font-size: 10px;
+    }
+
+    .colorBar {
+      margin-left: 20px;
+    }
+
+    .p0 {
+      background: rgb(120, 150, 200);
+      width: 10px;
+      height: 10px;
+      display: block;
+      margin: 0px;
+      padding: 0px;
+    }
+    .p1 {
+      background: rgb(160, 200, 250);
+      width: 10px;
+      height: 10px;
+      display: block;
+      margin: 0px;
+      padding: 0px;
+    }
+
+    .p2 {
+      background: rgb(250, 200, 0);
+      width: 10px;
+      height: 10px;
+      display: block;
+      margin: 0px;
+      padding: 0px;
+    }
+
+    .p3 {
+      background: rgb(210, 120, 120);
+      width: 10px;
+      height: 10px;
+      display: block;
+      margin: 0px;
+      padding: 0px;
+    }
+    .p4 {
+      background: rgb(250, 80, 80);
+      width: 10px;
+      height: 10px;
+      display: block;
+      margin: 0px;
+      padding: 0px;
+    }
+
+    h1 {
       font-size: 30px;
-      margin-left: 300px;
+      margin-left: 245px;
     }
-    button{
-      margin-left: 385px;
-      border: 0px;
-      color: #fff;
-      background: rgb(255,150,150);
-      height: 50px;
+
+    button {
+            border: 0px;
+          font-size:16px;
+          padding: 10px 5px;
+          border: none;
+          color:#fff;
+          display: inline-block;
+          background: rgb(255,150,150);
+    }
+
+    path {
+      cursor: pointer;
+    }
+
+    #layer {
+      height: 100px;
       width: 100px;
+      position: absolute;
+      background: rgba(255,255,255,0);
+      z-index: 10;
     }
-    .colorBar{
+    .pie{
+      background: rgba(255,255,255,0);
+    }
+    .colorBarArea{
       position: absolute;
     }
-    </style>
-  </head>
-  <body>
-    <h1>지역별 사고 발생 횟수</h1>
-    <div><button type="button" class="index" onClick="location.href='index.html'">돌아가기</button></div>
-    <div class="colorBarArea">
-      <div><h4>colorBar</h4></div>
-      <div class="colorBar">
-        <h5>Low</h5>
-        <div class="p0"></div>
-        <div class="p1"></div>
-        <div class="p2"></div>
-        <div class="p3"></div>
-        <div class="p4"></div>
-        <div class="p5"></div>
-        <div class="p6"></div>
-        <div class="p7"></div>
-        <div class="p8"></div>
-        <div class="p9"></div>
-        <h5>High</h5>
+  </style>
+</head>
+
+<body>
+  <h1>지역별 사망자, 부상자 비율</h1>
+  <div>
+    <button type="button" class="week" onClick="location.href='week.html'">요일</button>
+    <button type="button" class="accKind" onClick="location.href='accKind.html'">사고 유형</button>
+    <button type="button" class="dayAndNight" onClick="location.href='dayAndNight.html'">주야간</button>
+    <button type="button" class="death" onClick="location.href='death.html'">사망자수</button>
+    <button type="button" class="injuredPerson" onClick="location.href='injuredPerson.html'">부상자수</button>
+    <button type="button" class="location" onClick="location.href='location.html'">발생지</button>
+    <button type="button" class="perpetrator" onClick="location.href='perpetrator.html'">가해자</button>
+    <button type="button" class="victim" onClick="location.href='victim.html'">피해자</button>
+    <button type="button" class="roadKind" onClick="location.href='roadKind.html'">도로형태</button>
+    <button type="button" class="violationLaw" onClick="location.href='violationLaw.html'">법규위반</button>
+    <button type="button" class="hurtData" onClick="location.href='hurtData.html'">Parallel</button>
+    <button type="button" class="map" onClick="location.href='map.html'">map</button>
+    <button type="button" class="map2" onClick="location.href='map2.html'">map2</button>
+    <button type="button" class="map3" onClick="location.href='map3.html'">map3</button>
+  </div>
+  <div class="colorBarArea">
+    <div><h4>colorBar</h4></div>
+    <div class="colorBar">
+      <h5>Low</h5>
+      <div class="p0"></div>
+      <div class="p1"></div>
+      <div class="p2"></div>
+      <div class="p3"></div>
+      <div class="p4"></div>
+      <h5>High</h5>
     </div>
-    </div>
-    <div id="chart"></div>
-    <script src="https://d3js.org/d3.v3.min.js"></script>
-    <script src="https://d3js.org/topojson.v1.min.js"></script>
-    <script src="https://d3js.org/queue.v1.min.js"></script>
-    <script>
-      var width = 960,
-          height = 500;
+  </div>
+  <div id="chart">
+    <div id="layer"></div>
+  </div>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://d3js.org/topojson.v1.min.js"></script>
+  <script src="https://d3js.org/queue.v1.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <script>
+    var width = 960,
+      height = 500;
+    var svg = d3.select("#chart").append("svg")
+      .attr("width", width)
+      .attr("height", height);
+    var projection = d3.geoMercator()
+      .center([128, 36])
+      .scale(4000)
+      .translate([width / 2, height / 2]);
+    var path = d3.geoPath()
+      .projection(projection);
+    var quantize = d3.scaleQuantize()
+      .domain([0, 1])
+      .range(d3.range(3).map(function(i) {
+        return "p" + i;
+      }));
+    var popByName = d3.map();
 
-      var svg = d3.select("#chart").append("svg")
-        .attr("width", width)
-        .attr("height", height);
 
-      var projection = d3.geo.mercator()
-        .center([128, 36])
-        .scale(4000)
-        .translate([width/2, height/2]);
 
-      var path = d3.geo.path()
-        .projection(projection);
+    queue()
+      .defer(d3.json, "Data/municipalities-topo-simple.json")
+      .defer(d3.csv, "Data/locPer.csv", function(d) {
+        popByName.set(d.name, +d.death);
+      })
+      .await(ready);
 
-      var quantize = d3.scale.quantize()
-        .domain([0, 1])
-        .range(d3.range(9).map(function(i) { return "p" + i; }));
+    function ready(error, data) {
+      var features = topojson.feature(data, data.objects["municipalities-geo"]).features;
 
-      var popByName = d3.map();
-
-      queue()
-        .defer(d3.json, "municipalities-topo-simple.json")
-        .defer(d3.csv, "locCnt.csv", function(d) {
-            popByName.set(d.name, +d.count);
-        })
-        .await(ready);
-
-      function ready(error, data) {
-        var features = topojson.feature(data, data.objects["municipalities-geo"]).features;
-
-        features.forEach(function(d) {
-          d.properties.count = popByName.get(d.properties.name);
-          d.properties.density = d.properties.count / path.area(d);
-          d.properties.quantized = quantize(d.properties.density);
-
-          if (d.properties.count == 0) d.properties.quantized = "p0";
-          else if (d.properties.count < 50) d.properties.quantized = "p1";
-          else if (d.properties.count < 100) d.properties.quantized = "p2";
-          else if (d.properties.count < 150) d.properties.quantized = "p3";
-          else if (d.properties.count < 200) d.properties.quantized = "p4";
-          else if (d.properties.count < 250) d.properties.quantized = "p5";
-          else if (d.properties.count < 300) d.properties.quantized = "p6";
-          else if (d.properties.count < 350) d.properties.quantized = "p7";
-          else if (d.properties.count < 400) d.properties.quantized = "p8";
-          else d.properties.quantized = "p9";
-
-        });
+      features.forEach(function(d) {
+        d.properties.death = popByName.get(d.properties.name);
+        if (d.properties.death == 0) d.properties.hurt = 0;
+        else d.properties.hurt = (100 - d.properties.death).toFixed(2);
+        if (d.properties.death <= 20) d.properties.quantized = "p0";
+        else if (d.properties.death <= 40) d.properties.quantized = "p1";
+        else if (d.properties.death <= 60) d.properties.quantized = "p2";
+        else if (d.properties.death <= 80) d.properties.quantized = "p3";
+        else d.properties.quantized = "p4";
+        //d.properties.density = d.properties.death / path.area(d);
+        //d.properties.quantized = quantize(d.properties.density);
+      });
 
       svg.selectAll("path")
-          .data(features)
+        .data(features)
         .enter().append("path")
-          .attr("class", function(d) { return "municipality " + d.properties.quantized; })
-          .attr("d", path)
-          .attr("id", function(d) { return d.properties.name; })
+        .attr("class", function(d) {
+          return "municipality " + d.properties.quantized;
+        })
+        .on("mouseover", function(d) {
+          drawPie(d);
+        })
+        .on("mouseout", function(d) {
+          var header = document.querySelector(".pie");
+          header.parentNode.removeChild(header);
+        })
+        .attr("d", path)
+        .attr("id", function(d) {
+          return d.properties.name;
+        })
         .append("title")
-        .text(function(d) { return d.properties.name + ": " + d.properties.count + "회" });
-    }
-    </script>
-  </body>
+        .text(function(d) { return d.properties.name + ": " + d.properties.death+ "%" })
+
+      var test = $('path');
+
+      test.hover(function(event) {
+        x = event.clientX;
+        y = event.clientY;
+
+        //console.log(x + "," + y);
+        //alert('x좌표:' +x + ', y좌표:' + y);
+        $('#layer').css({
+          "top": y - 105,
+          "left": x - 50,
+          "position": "absolute"
+        }).show();
+      },function(){$('#layer').css({}).hide();});
+
+
+function drawPie(d){
+  var data = new Object();
+  data['hurt'] = parseFloat(d.properties.hurt);
+  data['death'] = d.properties.death;
+
+  var width=100,
+      height=100,
+      margin=10,
+      radius = Math.min(width, height) / 2 - margin;
+
+  var color = d3.scaleOrdinal()
+      .range(["rgb(160,200,250)","rgb(250,80,80)"]);
+
+  var pie = d3.pie()
+      .value( function(d) { return d.value; });
+  var data_ready=pie(d3.entries(data));
+
+  var svg2 = d3.select("#layer").append("svg")
+      .attr("width",100)
+      .attr("height",100)
+      .attr("class","pie")
+    .append("g")
+      .attr("transform","translate("+width/2+","+height/2+")");
+
+  var arcGenerator = d3.arc()
+      .innerRadius(0)
+      .outerRadius(radius);
+
+  svg2.selectAll("slices")
+      .data(data_ready)
+      .enter().append("path")
+        .attr("d",arcGenerator)
+        .attr('fill',function(d){return (color(d.data.key)) })
+        .attr('stroke','black')
+      .style('stroke-width','1px')
+
+  svg2.selectAll('slices')
+      .data(data_ready)
+      .enter().append('text')
+      .text(function(d) { return d.data.key; })
+      .attr("transform", function(d) {return "translate(" + arcGenerator.centroid(d) + ")"; })
+      .style("text-anchor", 'middle')
+      .style('font-size', 10);
+  }
+}
+  </script>
+</body>
+
 </html>

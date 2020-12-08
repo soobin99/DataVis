@@ -1,2 +1,4 @@
-violationLaw,Count
-Violation of drivers laws,100
+violationLaw,percent
+Violation of drivers laws,99.97
+defective maintenance,0.027
+pedestrian negligence,0.003

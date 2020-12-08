@@ -1,9 +1,16 @@
-victim,Count
-construction machinery,2.20 
-Pedestrian,3.52 
-a car,29.96 
-a van,35.68 
-None.,8.81 
-a two-wheeled car,0.44 
-special car,1.32 
-a freight car,18.06 
+victim,percent
+ATV,0.05
+Pedestrian,40.24
+a car,13.15
+a freight car,9.92
+a two-wheeled car,4.7
+a van,3.03
+agricultural machinery,1.47
+bicycle,3.81
+construction machinery,1.43
+etc,0.03
+motor bicycle,2.07
+none,19.24
+special car,0.76
+train,0.02
+unknown,0.08

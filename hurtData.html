@@ -3,7 +3,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-  <title>사상자수가 10명 이상인 큰 사고의 특징</title>
+  <title>사망자가 발생한 교통사고 정보</title>
 
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <script src="https://bl.ocks.org/syntagmatic/raw/3341641/render-queue.js"></script>
@@ -25,7 +25,7 @@
   }
 
   .parcoords canvas {
-    opacity: 0.9;
+    opacity: 1;
     pointer-events: none;
   }
 
@@ -45,6 +45,7 @@
   .axis .tick text {
     fill: #222;
     pointer-events: none;
+    font-size: 8px;
   }
 
   .axis.pl_facility .tick text,
@@ -115,7 +116,7 @@ button:hover{
 <body>
   <div id="hurtData">
   <div id='layout'>
-    <h2>사상자수가 10명 이상인 큰 사고의 특징</h2>
+    <h2>사망자가 발생한 교통사고 정보</h2>
     <div>
       <button type="button" class="week" onClick="location.href='week.html'">요일</button>
       <button type="button" class="accKind" onClick="location.href='accKind.html'">사고 유형</button>
@@ -128,6 +129,9 @@ button:hover{
       <button type="button" class="roadKind" onClick="location.href='roadKind.html'">도로형태</button>
       <button type="button" class="violationLaw" onClick="location.href='violationLaw.html'">법규위반</button>
       <button type="button" class="hurtData" onClick="location.href='hurtData.html'">Parallel</button>
+      <button type="button" class="map" onClick="location.href='map.html'">map</button>
+      <button type="button" class="map2" onClick="location.href='map2.html'">map2</button>
+        <button type="button" class="map3" onClick="location.href='map3.html'">map3</button>
     </div>
     </div>
   </div>
@@ -221,7 +225,7 @@ button:hover{
       type: types["String"]
     }
   ];
-  
+
   var xscale = d3.scalePoint().domain(d3.range(dimensions.length)).range([0,width]);
   var yAxis = d3.axisLeft();
 

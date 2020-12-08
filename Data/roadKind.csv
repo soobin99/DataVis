@@ -1,6 +1,11 @@
-roadKind,Count
-crossroad,24.23
-Other,0.88
-Other/Unknown,1.76
-singleroad,72.69
-Inside the underground road,0.44
+roadKind,percent
+Crossing,0.01
+Inside the underground road,0.13
+Other,0.76
+Other/Unknown,1.78
+crossroad,31.13
+overpass,0.25
+parking lot,0.04
+pedestrian crossing,0.01
+singleroad,65.84
+unknown,0.04

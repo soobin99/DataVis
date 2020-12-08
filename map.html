@@ -31,12 +31,13 @@
       margin-left: 320px;
     }
     button{
-      margin-left: 385px;
       border: 0px;
-      color: #fff;
+      font-size:16px;
+      padding: 10px 5px;
+      border: none;
+      color:#fff;
+      display: inline-block;
       background: rgb(255,150,150);
-      height: 50px;
-      width: 100px;
     }
     .colorBarArea{
       position: absolute;
@@ -45,7 +46,22 @@
   </head>
   <body>
     <h1>지역별 사고 밀도</h1>
-    <div><button type="button" class="index" onClick="location.href='index.html'">돌아가기</button></div>
+    <div>
+      <button type="button" class="week" onClick="location.href='week.html'">요일</button>
+      <button type="button" class="accKind" onClick="location.href='accKind.html'">사고 유형</button>
+      <button type="button" class="dayAndNight" onClick="location.href='dayAndNight.html'">주야간</button>
+      <button type="button" class="death" onClick="location.href='death.html'">사망자수</button>
+      <button type="button" class="injuredPerson" onClick="location.href='injuredPerson.html'">부상자수</button>
+      <button type="button" class="location" onClick="location.href='location.html'">발생지</button>
+      <button type="button" class="perpetrator" onClick="location.href='perpetrator.html'">가해자</button>
+      <button type="button" class="victim" onClick="location.href='victim.html'">피해자</button>
+      <button type="button" class="roadKind" onClick="location.href='roadKind.html'">도로형태</button>
+      <button type="button" class="violationLaw" onClick="location.href='violationLaw.html'">법규위반</button>
+      <button type="button" class="hurtData" onClick="location.href='hurtData.html'">Parallel</button>
+      <button type="button" class="map" onClick="location.href='map.html'">map</button>
+      <button type="button" class="map2" onClick="location.href='map2.html'">map2</button>
+      <button type="button" class="map3" onClick="location.href='map3.html'">map3</button>
+    </div>
     <div class="colorBarArea">
       <div><h4>colorBar</h4></div>
       <div class="colorBar">
@@ -89,8 +105,8 @@
       var popByName = d3.map();
 
       queue()
-        .defer(d3.json, "municipalities-topo-simple.json")
-        .defer(d3.csv, "locCnt.csv", function(d) {
+        .defer(d3.json, "Data/municipalities-topo-simple.json")
+        .defer(d3.csv, "Data/locCnt.csv", function(d) {
             popByName.set(d.name, +d.count);
         })
         .await(ready);

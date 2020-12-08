@@ -4,11 +4,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
   <title>18011499 임수빈</title>
-  
+
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <script src="https://d3js.org/d3.v4.min.js"></script>
   <style>
-      
+
 body {
   font-family: 'Open Sans', sans-serif;
 }
@@ -34,7 +34,6 @@ svg {
 }
 
 text {
-  font-size: 12px;
   fill: #fff;
 }
 
@@ -61,14 +60,9 @@ line#limit {
   stroke-opacity: 0.3;
 }
 
-text.divergence {
-  font-size: 14px;
-  fill: #2F4A6D;
-}
 
-text.value {
-  font-size: 14px;
-}
+
+
 
 text.title {
   font-size: 22px;
@@ -101,7 +95,7 @@ button:hover{
 <body>
   <div id="injuredPerson">
   <div id='layout'>
-    <h2>사상자수가 10명 이상인 큰 사고의 특징</h2>
+    <h2>사망자가 발생한 교통사고 정보</h2>
     <div>
       <button type="button" class="week" onClick="location.href='week.html'">요일</button>
       <button type="button" class="accKind" onClick="location.href='accKind.html'">사고 유형</button>
@@ -114,6 +108,9 @@ button:hover{
       <button type="button" class="roadKind" onClick="location.href='roadKind.html'">도로형태</button>
       <button type="button" class="violationLaw" onClick="location.href='violationLaw.html'">법규위반</button>
       <button type="button" class="hurtData" onClick="location.href='hurtData.html'">Parallel</button>
+      <button type="button" class="map" onClick="location.href='map.html'">map</button>
+      <button type="button" class="map2" onClick="location.href='map2.html'">map2</button>
+      <button type="button" class="map3" onClick="location.href='map3.html'">map3</button>
     </div>
     <div id='container'>
       <svg ></svg>
@@ -122,7 +119,7 @@ button:hover{
 </div>
 </body>
 <script>
-  
+
     d3.csv("Data/injuredPerson.csv", function(d, i, columns) {
       for (var i = 1, n = columns.length; i < n; ++i) d[columns[i]] = +d[columns[i]];
       return d;
@@ -135,18 +132,18 @@ button:hover{
       for(var i=0;i<data.length;i++) {
         var obj = {};
         obj.injuredPerson = data[i].injuredPerson;
-        obj.Count = data[i].Count;
-        
+        obj.percent = data[i].percent;
+
         console.log(obj);
 
         sample.push(obj);
       }
       console.log(sample);
-    
-    
+
+
     const svg = d3.select('svg');
     const svgContainer = d3.select('#container');
-    
+
     const margin = 80;
     const width = 1000 - 2 * margin;
     const height = 600 - 2 * margin;
@@ -158,14 +155,14 @@ button:hover{
       .range([0, width])
       .domain(sample.map((s) => s.injuredPerson))
       .padding(0.4)
-    
+
     const yScale = d3.scaleLinear()
       .range([height, 0])
-      .domain([0, 20]);
+      .domain([0, 80]);
 
     // vertical grid lines
-    // const makeXLines = () => d3.axisBottom()
-    //   .scale(xScale)
+     const makeXLines = () => d3.axisBottom()
+       .scale(xScale)
 
     const makeYLines = () => d3.axisLeft()
       .scale(yScale)
@@ -178,13 +175,13 @@ button:hover{
       .call(d3.axisLeft(yScale));
 
     // vertical grid lines
-    // chart.append('g')
-    //   .attr('class', 'grid')
-    //   .attr('transform', `translate(0, ${height})`)
-    //   .call(makeXLines()
-    //     .tickSize(-height, 0, 0)
-    //     .tickFormat('')
-    //   )
+     chart.append('g')
+       .attr('class', 'grid')
+       .attr('transform', `translate(0, ${height})`)
+       .call(makeXLines()
+         .tickSize(-height, 0, 0)
+         .tickFormat('')
+       )
 
     chart.append('g')
       .attr('class', 'grid')
@@ -202,11 +199,11 @@ button:hover{
       .append('rect')
       .attr('class', 'bar')
       .attr('x', (g) => xScale(g.injuredPerson))
-      .attr('y', (g) => yScale(g.Count))
-      .attr('height', (g) => height - yScale(g.Count))
+      .attr('y', (g) => yScale(g.percent))
+      .attr('height', (g) => height - yScale(g.percent))
       .attr('width', xScale.bandwidth())
       .on('mouseenter', function (actual, i) {
-        d3.selectAll('.Count')
+        d3.selectAll('.percent')
           .attr('opacity', 0)
 
         d3.select(this)
@@ -216,7 +213,7 @@ button:hover{
           .attr('x', (a) => xScale(a.injuredPerson) - 5)
           .attr('width', xScale.bandwidth() + 10)
 
-        const y = yScale(actual.Count)
+        const y = yScale(actual.percent)
 
         line = chart.append('line')
           .attr('id', 'limit')
@@ -225,25 +222,9 @@ button:hover{
           .attr('x2', width)
           .attr('y2', y)
 
-        barGroups.append('text')
-          .attr('class', 'divergence')
-          .attr('x', (a) => xScale(a.injuredPerson) + xScale.bandwidth() / 2)
-          .attr('y', (a) => yScale(a.Count) - 10)
-          .attr('fill', 'white')
-          .attr('text-anchor', 'middle')
-          .text((a, idx) => {
-            const divergence = (a.Count - actual.Count).toFixed(1)
-            
-            let text = ''
-            if (divergence > 0) text += '+'
-            text += `${divergence}%`
-
-            return idx !== i ? text : '';
-          })
-
       })
       .on('mouseleave', function () {
-        d3.selectAll('.Count')
+        d3.selectAll('.percent')
           .attr('opacity', 1)
 
         d3.select(this)
@@ -254,25 +235,23 @@ button:hover{
           .attr('width', xScale.bandwidth())
 
         chart.selectAll('#limit').remove()
-        chart.selectAll('.divergence').remove()
       })
 
-    barGroups 
-      .append('text')
-      .attr('class', 'Count')
+    barGroups.append('text')
+      .attr('class', 'percent')
+      .attr('font-size', 5+'px')
       .attr('x', (a) => xScale(a.injuredPerson) + xScale.bandwidth() / 2)
-      .attr('y', (a) => yScale(a.Count) - 10)
+      .attr('y', (a) => yScale(a.percent) - 10)
       .attr('text-anchor', 'middle')
-      .text((a) => `${a.Count}%`)
-    
-    svg
-      .append('text')
+      .text((a) => `${a.percent}%`)
+
+    svg.append('text')
       .attr('class', 'label')
       .attr('x', -(height / 2) - margin)
       .attr('y', margin / 2.4)
       .attr('transform', 'rotate(-90)')
       .attr('text-anchor', 'middle')
-      .text('사상자수가 10명 이상인 큰 사고 (%)')
+      .text('사망자수가 발생한 사고 비율 (%)')
 
     svg.append('text')
       .attr('class', 'label')
@@ -286,9 +265,9 @@ button:hover{
       .attr('x', width / 2 + margin)
       .attr('y', 40)
       .attr('text-anchor', 'middle')
-      .text('부상자수별 사상자수가 10명 이상인 큰 사고 (%)')
+      .text('부상자수별 사망자수가 발생한 사고 비율 (%)')
 
     });
-  
+
 </script>
 </html>

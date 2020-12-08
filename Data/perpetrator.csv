@@ -1,8 +1,14 @@
-perpetrator,Count
-construction machinery,4.41 
-agricultural machinery,0.44 
-a car,30.40 
-a van,44.05 
-a two-wheeled car,0.44 
-special car,0.44 
-a freight car,19.82 
+perpetrator,percent
+ATV,0.32
+PM,0.03
+a car,49.58
+a freight car,22.9
+a two-wheeled car,8.63
+a van,7.29
+agricultural machinery,1.51
+bicycle,2.34
+construction machinery,2.21
+etc,0.02
+motor bicycle,3.95
+special car,1.04
+unknown,0.18
