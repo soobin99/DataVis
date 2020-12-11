@@ -167,8 +167,8 @@ button:hover{
       .domain([0, 50]);
 
     // vertical grid lines
-    // const makeXLines = () => d3.axisBottom()
-    //   .scale(xScale)
+     const makeXLines = () => d3.axisBottom()
+       .scale(xScale)
 
     const makeYLines = () => d3.axisLeft()
       .scale(yScale)
@@ -181,13 +181,13 @@ button:hover{
       .call(d3.axisLeft(yScale));
 
     // vertical grid lines
-    // chart.append('g')
-    //   .attr('class', 'grid')
-    //   .attr('transform', `translate(0, ${height})`)
-    //   .call(makeXLines()
-    //     .tickSize(-height, 0, 0)
-    //     .tickFormat('')
-    //   )
+     chart.append('g')
+       .attr('class', 'grid')
+       .attr('transform', `translate(0, ${height})`)
+       .call(makeXLines()
+         .tickSize(-height, 0, 0)
+         .tickFormat('')
+       )
 
     chart.append('g')
       .attr('class', 'grid')
