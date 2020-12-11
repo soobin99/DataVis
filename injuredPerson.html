@@ -79,10 +79,18 @@ text.source {
 }
 
 button{
+  background-color:#fff;
+  font-size:16px;
+  padding: 10px 5px;
+  border-bottom:  none;
+  color:#2F4A6D;
+  display: inline-block;
+}
+.injuredPerson{
   background-color: #2F4A6D;
   font-size:16px;
   padding: 10px 5px;
-  border: none;
+  border-bottom:  none;
   color:#fff;
   display: inline-block;
 }
@@ -97,21 +105,18 @@ button:hover{
   <div id='layout'>
     <h2>사망자가 발생한 교통사고 정보</h2>
     <div>
-      <button type="button" class="week" onClick="location.href='week.html'">요일</button>
-      <button type="button" class="accKind" onClick="location.href='accKind.html'">사고 유형</button>
-      <button type="button" class="dayAndNight" onClick="location.href='dayAndNight.html'">주야간</button>
-      <button type="button" class="death" onClick="location.href='death.html'">사망자수</button>
-      <button type="button" class="injuredPerson" onClick="location.href='injuredPerson.html'">부상자수</button>
-      <button type="button" class="location" onClick="location.href='location.html'">발생지</button>
-      <button type="button" class="perpetrator" onClick="location.href='perpetrator.html'">가해자</button>
-      <button type="button" class="victim" onClick="location.href='victim.html'">피해자</button>
-      <button type="button" class="roadKind" onClick="location.href='roadKind.html'">도로형태</button>
-      <button type="button" class="violationLaw" onClick="location.href='violationLaw.html'">법규위반</button>
       <button type="button" class="hurtData" onClick="location.href='hurtData.html'">Parallel</button>
-      <button type="button" class="map" onClick="location.href='map.html'">map</button>
-      <button type="button" class="map2" onClick="location.href='map2.html'">map2</button>
-      <button type="button" class="map3" onClick="location.href='map3.html'">map3</button>
-    </div>
+          <button type="button" class="dayAndNight" onClick="location.href='dayAndNight.html'">주야간</button>
+          <button type="button" class="week" onClick="location.href='week.html'">요일</button>
+          <button type="button" class="death" onClick="location.href='death.html'">사망자수</button>
+          <button type="button" class="injuredPerson" onClick="location.href='injuredPerson.html'">부상자수</button>
+          <button type="button" class="perpetrator" onClick="location.href='perpetrator.html'">가해자</button>
+          <button type="button" class="victim" onClick="location.href='victim.html'">피해자</button>
+          <button type="button" class="location" onClick="location.href='location.html'">발생지</button>
+          <button type="button" class="accKind" onClick="location.href='accKind.html'">사고 유형</button>
+          <button type="button" class="roadKind" onClick="location.href='roadKind.html'">도로형태</button>
+          <button type="button" class="violationLaw" onClick="location.href='violationLaw.html'">법규위반</button>
+            </div>
     <div id='container'>
       <svg ></svg>
     </div>

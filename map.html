@@ -26,18 +26,29 @@
     .p6{ background: rgb(201,73,33); width:10px; height:10px; display: block;margin: 0px; padding: 0px;}
     .p7{ background: rgb(186,31,8); width:10px; height:10px; display: block;margin: 0px; padding: 0px;}
     .p8{ background: rgb(157,8,8); width:10px; height:10px; display: block;margin: 0px; padding: 0px;}
-    h1{
-      font-size: 30px;
-      margin-left: 320px;
-    }
-    button{
-      border: 0px;
+    h2{
+      margin: 5px;
+      margin-bottom: 20px;
+      text-align: center;
+    }button{
+      background-color:#fff;
       font-size:16px;
       padding: 10px 5px;
-      border: none;
+      border-bottom:  none;
+      color:#2F4A6D;
+      display: inline-block;
+    }
+    .location{
+      background-color: #2F4A6D;
+      font-size:16px;
+      padding: 10px 5px;
+      border-bottom:  none;
       color:#fff;
       display: inline-block;
-      background: rgb(255,150,150);
+    }
+    button:hover{
+      background-color:#FED966;
+      color: #2F4A6D;
     }
     .colorBarArea{
       position: absolute;
@@ -45,22 +56,40 @@
     path {
       cursor: pointer;
     }
+    .button, .mapVis{
+      text-align: center;
+    }
+    .mapVis button{
+      border: none;
+      margin-top: 8px;
+      background: rgb(255,150,150);
+      color : #FFF;
+    }
+    .mapVis button:hover{
+      background-color:#FED966;
+      color : #FFF ;
+    }
     </style>
   </head>
   <body>
-    <h1>지역별 사고 밀도</h1>
-    <div>
-      <button type="button" class="week" onClick="location.href='week.html'">요일</button>
-      <button type="button" class="accKind" onClick="location.href='accKind.html'">사고 유형</button>
-      <button type="button" class="dayAndNight" onClick="location.href='dayAndNight.html'">주야간</button>
-      <button type="button" class="death" onClick="location.href='death.html'">사망자수</button>
-      <button type="button" class="injuredPerson" onClick="location.href='injuredPerson.html'">부상자수</button>
-      <button type="button" class="location" onClick="location.href='location.html'">발생지</button>
-      <button type="button" class="perpetrator" onClick="location.href='perpetrator.html'">가해자</button>
-      <button type="button" class="victim" onClick="location.href='victim.html'">피해자</button>
-      <button type="button" class="roadKind" onClick="location.href='roadKind.html'">도로형태</button>
-      <button type="button" class="violationLaw" onClick="location.href='violationLaw.html'">법규위반</button>
-      <button type="button" class="hurtData" onClick="location.href='hurtData.html'">Parallel</button>
+    <h2>지역별 사고 밀도</h2>
+    <div class="button">
+
+        <button type="button" class="hurtData" onClick="location.href='hurtData.html'">Parallel</button>
+            <button type="button" class="dayAndNight" onClick="location.href='dayAndNight.html'">주야간</button>
+            <button type="button" class="week" onClick="location.href='week.html'">요일</button>
+            <button type="button" class="death" onClick="location.href='death.html'">사망자수</button>
+            <button type="button" class="injuredPerson" onClick="location.href='injuredPerson.html'">부상자수</button>
+            <button type="button" class="perpetrator" onClick="location.href='perpetrator.html'">가해자</button>
+            <button type="button" class="victim" onClick="location.href='victim.html'">피해자</button>
+            <button type="button" class="location" onClick="location.href='location.html'">발생지</button>
+            <button type="button" class="accKind" onClick="location.href='accKind.html'">사고 유형</button>
+            <button type="button" class="roadKind" onClick="location.href='roadKind.html'">도로형태</button>
+            <button type="button" class="violationLaw" onClick="location.href='violationLaw.html'">법규위반</button>
+              </div>
+    </div>
+    <div id='container'>
+    <div class='mapVis'>
       <button type="button" class="map" onClick="location.href='map.html'">map</button>
       <button type="button" class="map2" onClick="location.href='map2.html'">map2</button>
       <button type="button" class="map3" onClick="location.href='map3.html'">map3</button>
