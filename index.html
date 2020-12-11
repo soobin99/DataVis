@@ -83,6 +83,9 @@
     opacity: 1;
     font-weight: bold;
   }
+  h2{
+    text-align: center;
+  }
 
   .brush .extent {
     fill-opacity: .3;
@@ -115,12 +118,12 @@
     color:#fff;
     display: inline-block;
   }
+  .button{
+    text-align: center;
+  }
 button:hover{
   background-color:#FED966;
   color: #2F4A6D;
-}
-h2{
-  text-align: center;
 }
   </style>
 </head>
@@ -128,7 +131,7 @@ h2{
   <div id="hurtData">
   <div id='layout'>
     <h2>사망자가 발생한 교통사고 정보</h2>
-    <div>
+    <div class="button">
       <button type="button" class="hurtData" onClick="location.href='hurtData.html'">Parallel</button>
           <button type="button" class="dayAndNight" onClick="location.href='dayAndNight.html'">주야간</button>
           <button type="button" class="week" onClick="location.href='week.html'">요일</button>
